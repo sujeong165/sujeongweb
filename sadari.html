@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>간단한 사다리게임</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            text-align: center;
+        }
+        #ladder {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .column {
+            margin: 0 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .step {
+            width: 10px;
+            height: 30px;
+            background: #bbb;
+            margin: 0;
+            position: relative;
+        }
+        .h-line {
+            position: absolute;
+            width: 40px;
+            height: 4px;
+            background: #4A90E2;
+            left: 10px;
+            top: 13px;
+        }
+        .start-label, .end-label {
+            margin: 8px 0;
+            font-weight: bold;
+        }
+        button {
+            margin: 20px 8px;
+            padding: 12px 24px;
+            font-size: 1em;
+            background: #4A90E2;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #357ABD;
+        }
+        #result {
+            margin-top: 28px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>사다리게임</h2>
+    <div>
+        <label>참가자 수 (2~6): <input type="number" id="players" min="2" max="6" value="4"></label>
+        <button onclick="generateLadder()">사다리 생성</button>
+    </div>
+    <div id="ladder"></div>
+    <div id="startButtons"></div>
+    <div id="result"></div>
+    <script>
+        let ladderData = [];
+        let playerCount = 4;
+        let ladderHeight = 10;
+        let destinations = [];
+
+        function generateLadder() {
+            playerCount = parseInt(document.getElementById('players').value);
+            if (isNaN(playerCount) || playerCount < 2 || playerCount > 6) {
+                alert('참가자 수는 2~6 사이로 입력하세요.');
+                return;
+            }
+
+            // 결과 배열(랜덤 섞기)
+            destinations = [];
+            for (let i = 1; i <= playerCount; i++) destinations.push(`결과${i}`);
+            destinations = shuffle(destinations);
+
+            // 사다리 데이터 생성
+            ladderData = [];
+            for (let r = 0; r < ladderHeight; r++) {
+                let row = Array(playerCount - 1).fill(false);
+                // 인접한 가로줄이 겹치지 않도록 랜덤 배치
+                for (let c = 0; c < playerCount - 1; c++) {
+                    if (Math.random() < 0.4 && (c === 0 || !row[c - 1])) {
+                        row[c] = true;
+                    }
+                }
+                ladderData.push(row);
+            }
+
+            drawLadder();
+            drawStartButtons();
+            document.getElementById('result').innerText = '';
+        }
+
+        function drawLadder() {
+            const ladderDiv = document.getElementById('ladder');
+            ladderDiv.innerHTML = '';
+            for (let c = 0; c < playerCount; c++) {
+                const colDiv = document.createElement('div');
+                colDiv.className = 'column';
+
+                // 시작 라벨
+                const startLabel = document.createElement('div');
+                startLabel.className = 'start-label';
+                startLabel.innerText = `출발${c+1}`;
+                colDiv.appendChild(startLabel);
+
+                // 세로줄과 가로줄
+                for (let r = 0; r < ladderHeight; r++) {
+                    const stepDiv = document.createElement('div');
+                    stepDiv.className = 'step';
+
+                    // 가로줄 그리기 (왼쪽 세로줄에만)
+                    if (c < playerCount - 1 && ladderData[r][c]) {
+                        const hLine = document.createElement('div');
+                        hLine.className = 'h-line';
+                        stepDiv.appendChild(hLine);
+                    }
+                    colDiv.appendChild(stepDiv);
+                }
+
+                // 도착 라벨
+                const endLabel = document.createElement('div');
+                endLabel.className = 'end-label';
+                endLabel.innerText = destinations[c];
+                colDiv.appendChild(endLabel);
+
+                ladderDiv.appendChild(colDiv);
+            }
+        }
+
+        function drawStartButtons() {
+            const btnDiv = document.getElementById('startButtons');
+            btnDiv.innerHTML = '';
+            for (let i = 0; i < playerCount; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = `출발${i+1} 선택`;
+                btn.onclick = () => showResult(i);
+                btnDiv.appendChild(btn);
+            }
+        }
+
+        function showResult(startIdx) {
+            let idx = startIdx;
+            for (let r = 0; r < ladderHeight; r++) {
+                // 가로줄을 만나면 오른쪽으로 이동
+                if (idx < playerCount - 1 && ladderData[r][idx]) {
+                    idx++;
+                }
+                // 왼쪽에서 가로줄을 만났는지 확인
+                else if (idx > 0 && ladderData[r][idx - 1]) {
+                    idx--;
+                }
+            }
+            document.getElementById('result').innerText = 
+                `출발${startIdx+1} → ${destinations[idx]}`;
+        }
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // 최초 실행
+        generateLadder();
+    </script>
+</body>
+</html>

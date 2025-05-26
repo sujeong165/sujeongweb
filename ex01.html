@@ -1,0 +1,40 @@
+<!DOCTYPE html> 
+
+<html>
+
+<head>
+<title>자바스크립트 예제 배우기</title>
+<meta charset="utf-8"> 
+<style>
+ /* 버튼에 스타일 적용 */
+ .pretty-button {
+            padding: 16px 36px;           /* 버튼의 위아래, 좌우 여백 */
+            font-size: 1.2em;              /* 글자 크기 */
+            background-color: #e24a9e;     /* 버튼 배경색 */
+            color: white;                  /* 글자색 */
+            border: none;                  /* 테두리 없앰 */
+            border-radius: 12px;           /* 모서리를 둥글게 */
+            cursor: pointer;               /* 마우스를 올리면 손가락 모양 */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* 그림자 추가 */
+            transition: background 0.2s;   /* 배경색 변경 부드럽게 */
+        }
+        .pretty-button:hover {
+            background-color: #bd3584;     /* 마우스를 올렸을 때 색상 변화 */
+        }
+</style>
+</head>
+
+<body>
+    <button class="pretty-button" onclick="sayHello()">클릭해보세요!</button>
+    <p id="message"></p>
+<script>00000000000000000000000000000000000000000000000
+    // <script> 태그 안에
+    // 자바스크립트 코드를 작성할 수 있는 곳임
+    // <meta charset="utf-8"> 이거하면 한글이 안 깨진대욤
+    function sayHello() {
+            document.getElementById("message").innerText = "안녕하세요! 자바스크립트에 오신 것을 환영합니다.";
+        }
+</script>
+</body>
+
+</html>
