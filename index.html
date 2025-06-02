@@ -1,38 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <title>Bootstrap 연습하기</title>
-  <meta charset="utf-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <title>RixInooAriDuri 스타일 데모</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container-fluid p-5 bg-primary text-white text-center">
-  <h1>연습하기 페이지</h1>
-  <p>bootstrap 5버전으로 페이지 디자인을 배워보아요</p> 
-</div>
-  
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>기말 계획세우자</h3>
-      <p>내 포트폴리오를 만드는 거야</p>
-      <p>포트폴리오 만드는 거니까 신중히 해보자구 </p>
-    </div>
-    <div class="col-sm-4">
-      <h3>감기 이슈 </h3>
-      <p>코감기, 목감기 지독하게 걸렸네,, </p>
-      <p>머리 아프요~ 집 가고 시프요 </p>
-    </div>
-    <div class="col-sm-4">
-      <h3>but, 과제 지옥</h3>        
-      <p>레이아웃에 맞춰서 포트폴리오를 빨리 만들어 보자 </p>
-      <p>하다가 안되면 ai친구한테 도움을 받으면 되겠지 </p>
-    </div>
-  </div>
-</div>
+<nav class="container-fluid">
+  <ul>
+    <li><strong>RixInooAriDuri</strong></li>
+  </ul>
+  <ul>
+    <li><a href="#features">특징</a></li>
+    <li><a href="#samples">샘플</a></li>
+    <li><a href="#download" role="button">다운로드</a></li>
+  </ul>
+</nav>
 
+<main class="container">
+
+  <!-- ✅ 박스 영역 시작 -->
+  <section class="content-box fade-in">
+    <h2>RixFont x 이누아리두리네</h2>
+    <p>
+      인스타툰 &lt;너무 귀여워서 푸들푸들&gt;을 통해 귀여운 반려견과의 일상을 그리는
+      <strong>이누아리두리네</strong>와 콜라보로 기획, 제작한 서체입니다.<br>
+      세상 모든 강아지를 사랑하는 사람들을 위해 폰트 무료 배포를 기획했습니다.
+    </p>
+
+    <div class="dongle-text">둥 글</div>
+
+    <div class="faces">
+      <img src="images/face1.png" alt="둥글 얼굴1">
+      <img src="images/face2.png" alt="둥글 얼굴2">
+    </div>
+
+    <p class="caption">
+      아이들의 동글동글 눈, 코, 입, 얼굴을 쏙 빼닮은 폰트!<br>
+      웃고, 울고, 화나고, 신나는 친구들의 다채로운 표정과 사랑스러움을 담았습니다.
+    </p>
+  </section>
+  <!-- ✅ 박스 영역 끝 -->
+
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.content-box {
+  border: 2px solid #000;
+  padding: 3rem 2rem;
+  margin: 4rem auto;
+  max-width: 800px;
+  background: white;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.content-box h2 {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.content-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.dongle-text {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 4rem;
+  color: #ff8c00;
+  margin: 2rem 0 1rem;
+  letter-spacing: 1rem;
+}
+
+.faces {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.faces img {
+  width: 120px;
+  height: auto;
+}
+
+.caption {
+  background: #f3f3f3;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
