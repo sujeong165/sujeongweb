@@ -1,3 +1,4 @@
+/* 본문 내용 설정들 */
 body {
   margin: 0;
   font-family: 'Noto Sans KR', sans-serif;
@@ -5,7 +6,7 @@ body {
 }
 
 .content-box {
-  background: url('크레용 테두리01.png') no-repeat center/contain;
+  background: url('크레용 테두리02.png') no-repeat center/contain;
   background-color: white;
   padding: 4rem 2rem;
   margin: 4rem auto;
@@ -64,4 +65,79 @@ body {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.text-nav {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: #fdfcf5;
+}
+
+.text-nav ul {
+  display: flex;
+  gap: 4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.text-nav a {
+  text-decoration: none;
+  color: #222;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Arial Black', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.text-nav a:hover {
+  color: #ff6f00;
+}
+
+
+
+
+
+
+
+
+/* 상단 타이틀 바 */
+
+.text-nav {
+  position: fixed;                /* ✅ 고정 유지 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: center;        /* ✅ 메뉴 중앙 정렬 */
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;             /* ✅ .logo 기준 */
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Arial Black', sans-serif;
+  font-size: 1.2rem;
+  color: #222;
+  padding-left: 2rem;
+}
+
+
+/*타일틀 바 백그라운드 */
+.text-nav.scrolled {
+  background-color: rgba(255, 255, 255, 0.733); /* ✅ 더 뚜렷하게 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
