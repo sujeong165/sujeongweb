@@ -6,8 +6,33 @@
   <title>Portfolio.ZIP</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
 </head>
 <body>
+<audio id="backgroundMusic" loop>
+        <source src="music/background.mp3" type="audio/mpeg">
+    </audio>
+
+<div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <button id="musicToggle" style="background: #ffbb00; border: none; color: white; 
+            padding: 12px 20px; border-radius: 20px; cursor: pointer;">
+        🎵 음악 켜기
+    </button>
+    <div style="margin-top: 10px; background: white; padding: 8px; border-radius: 10px;">
+        <span>🔊</span>
+        <input type="range" id="volumeSlider" min="0" max="100" value="50" style="width: 80px;">
+    </div>
+</div>
+
+
+
+
+
 
 <nav class="text-nav" id="mainNav">
   <div class="nav-inner">
@@ -24,7 +49,7 @@
 <main class="container">
 
   <!-- ✅ 박스 영역 시작 -->
-  <section class="content-box fade-in">
+  <section class="content-box fade-in" id="forry">
     <h2>포리방범대</h2>
     <p>
       성인식 개선을 위해 만들어진 포리란 캐릭터는 귀여운 만화를 통해 <br> 사람들에게 성지식을 전달하고 인식도 개선하기 위해 만들어졌습니다.
@@ -65,7 +90,7 @@
 
 
 
-  <section class="content-box fade-in">
+  <section class="content-box fade-in" id="infographic">
     <h2>창작 디자인 맛보기 </h2>
     <p>
       다양한 인포그래픽을 그리며 툴을 자유롭게 <br> 사용할 수 있게 연습을 꾸준히 했습니다. <br>
@@ -122,8 +147,77 @@
 
     </p>
   </section>
+
+
+
+
+    <section class="content-box fade-in" id="others">
+    <h2>그 외 정보</h2>
+    <p>
+      이름: 박수정 <br>
+      학력: 경성대학교 미디어콘텐츠학과 졸업 예정 <br>
+      대외활동: 커넥트현대 서포터즈, 오디너리 동아리, 일경험 프로젝트  <br>
+    </p>
+
+    <div class="faces">
+      <img src="images/face6.png" alt="둥글 얼굴2" style="width: 300px; height: auto;">
+      <img src="images/face7.jpeg" alt="둥글 얼굴2" style="width: 300px; height: auto;">
+    </div>
+    <br>
+    <p class="caption">
+      인포그래픽 작품 이외의 영상 작업물도 업로드 중입니다. 
+
+    </p>
+  </section>
 </main>
 
 <script src="script.js"></script>
+
+
+
+ <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const audio = document.getElementById('backgroundMusic');
+      const toggleButton = document.getElementById('musicToggle');
+      let isPlaying = false;
+            
+      // 초기 볼륨 설정 (50%)
+      audio.volume = 0.5;
+            
+      // 페이지 클릭 시 한 번 자동재생 시도
+      function tryAutoPlay() {
+          if (!isPlaying) {
+              audio.play().then(() => {
+                  isPlaying = true;
+                  toggleButton.textContent = '🎵 음악 끄기';
+              }).catch(() => {
+                  console.log('자동재생 제한됨');
+              });
+              document.body.removeEventListener('click', tryAutoPlay);
+          }
+      }
+      document.body.addEventListener('click', tryAutoPlay);
+            
+      // 버튼 클릭 기능
+      toggleButton.addEventListener('click', function(event) {
+          event.stopPropagation();
+                
+          if (isPlaying && !audio.paused) {
+              // 음악 끄기
+              audio.pause();
+              isPlaying = false;
+              toggleButton.textContent = '🎵 음악 켜기';
+          } else {
+              // 음악 켜기
+              audio.play().then(() => {
+                  isPlaying = true;
+                  toggleButton.textContent = '🎵 음악 끄기';
+              }).catch(() => {
+                  alert('음악 재생에 실패했습니다.');
+              });
+          }
+      });
+  });
+    </script>
 </body>
 </html>

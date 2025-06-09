@@ -20,3 +20,11 @@ window.addEventListener('scroll', () => {
     nav.classList.remove('scrolled');
   }
 });
+
+
+
+// 볼륨 조절 (기존 JavaScript 코드 안에 추가)
+const volumeSlider = document.getElementById('volumeSlider');
+volumeSlider.addEventListener('input', function() {
+    audio.volume = this.value / 100;
+});
