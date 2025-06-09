@@ -14,19 +14,6 @@
 
 </head>
 <body>
-<audio id="backgroundMusic" loop>
-        <source src="music/background.mp3" type="audio/mpeg">
-    </audio>
-
-<div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
-    <button id="musicToggle" style="background: #ffbb00; border: none; color: white; 
-            padding: 12px 20px; border-radius: 20px; cursor: pointer;">
-        🎵 음악 켜기
-    </button>
-    <div style="margin-top: 10px; background: white; padding: 8px; border-radius: 10px;">
-        <span>🔊</span>
-        <input type="range" id="volumeSlider" min="0" max="100" value="50" style="width: 80px;">
-    </div>
 </div>
 
 
@@ -154,8 +141,8 @@
     <section class="content-box fade-in" id="others">
     <h2>그 외 정보</h2>
     <p>
-      이름: 박수정 <br>
       학력: 경성대학교 미디어콘텐츠학과 졸업 예정 <br>
+      자격증: 
       대외활동: 커넥트현대 서포터즈, 오디너리 동아리, 일경험 프로젝트  <br>
     </p>
 
@@ -171,53 +158,26 @@
   </section>
 </main>
 
+
+
+
+<audio id="bg-music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+  브라우저가 오디오 태그를 지원하지 않습니다.
+</audio>
+
+<div style="padding: 1rem;">
+  <label for="volume">🔊 볼륨 조절:</label>
+  <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+</div>
+
+
+
+
+
+
 <script src="script.js"></script>
 
 
-
- <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      const audio = document.getElementById('backgroundMusic');
-      const toggleButton = document.getElementById('musicToggle');
-      let isPlaying = false;
-            
-      // 초기 볼륨 설정 (50%)
-      audio.volume = 0.5;
-            
-      // 페이지 클릭 시 한 번 자동재생 시도
-      function tryAutoPlay() {
-          if (!isPlaying) {
-              audio.play().then(() => {
-                  isPlaying = true;
-                  toggleButton.textContent = '🎵 음악 끄기';
-              }).catch(() => {
-                  console.log('자동재생 제한됨');
-              });
-              document.body.removeEventListener('click', tryAutoPlay);
-          }
-      }
-      document.body.addEventListener('click', tryAutoPlay);
-            
-      // 버튼 클릭 기능
-      toggleButton.addEventListener('click', function(event) {
-          event.stopPropagation();
-                
-          if (isPlaying && !audio.paused) {
-              // 음악 끄기
-              audio.pause();
-              isPlaying = false;
-              toggleButton.textContent = '🎵 음악 켜기';
-          } else {
-              // 음악 켜기
-              audio.play().then(() => {
-                  isPlaying = true;
-                  toggleButton.textContent = '🎵 음악 끄기';
-              }).catch(() => {
-                  alert('음악 재생에 실패했습니다.');
-              });
-          }
-      });
-  });
-    </script>
 </body>
 </html>

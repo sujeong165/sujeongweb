@@ -22,9 +22,15 @@ window.addEventListener('scroll', () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  const audio = document.getElementById("bg-music");
+  const volumeControl = document.getElementById("volume");
 
-// 볼륨 조절 (기존 JavaScript 코드 안에 추가)
-const volumeSlider = document.getElementById('volumeSlider');
-volumeSlider.addEventListener('input', function() {
-    audio.volume = this.value / 100;
+  // 초기에 볼륨 세팅
+  audio.volume = volumeControl.value;
+
+  // 볼륨 조절 이벤트 연결
+  volumeControl.addEventListener("input", function () {
+    audio.volume = this.value;
+  });
 });
