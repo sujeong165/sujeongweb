@@ -9,6 +9,40 @@ html, body {
   scroll-behavior: smooth;
 }
 
+/* 🔳 상단바 스타일 */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px; /* ← 높이 조절 가능 */
+  background-color: rgba(255, 255, 255, 0.333); /* 반투명 흰 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px; /* ← 글자 크기 조절 가능 */
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #b81eff;
+}
+
+
+
 /* 🔳 섹션 설정 */
 .section {
   height: 100vh;
@@ -22,13 +56,13 @@ html, body {
 
 /* 🖼️ 배경 이미지 넣기 */
 .section1 {
-  background-image: url('이미지001.png');
+  background-image: url('배경1.png');
 }
 .section2 {
-  background-image: url('이미지002.png');
+  background-image: url('배경2.png');
 }
 .section3 {
-  background-image: url('bg3.png');
+  background-image: url('배경3.png');
 }
 
 /* 🎈 둥실 PNG 스타일 */
@@ -45,3 +79,16 @@ html, body {
   50%  { transform: translateY(-20px); }
   100% { transform: translateY(0); }
 }
+
+/* ✅ [기존 CSS에 추가] 스크롤 등장 애니메이션 기본 상태 */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+  z-index: 10; /* 필요 시 배경보다 위로 */
+}
+
+/* ✅ [기존 CSS에 추가] 화면에 보일 때 효과 */
+.scroll-fade.show {
+  opacity: 1;
+  transform: translateY(0);
