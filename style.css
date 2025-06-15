@@ -52,6 +52,7 @@ html, body {
   background-repeat: no-repeat;
   position: relative; /* 떠다니는 이미지 기준 */
   overflow: hidden;
+  padding-top: 80px;
 }
 
 /* 🖼️ 배경 이미지 넣기 */
