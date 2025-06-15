@@ -73,6 +73,10 @@ html, body {
   background-image: url('배경5.png');
 }
 
+.section6 {
+  background-image: url('배경5.png');
+}
+
 /* 🎈 둥실 PNG 스타일 */
 .floating {
   position: absolute;
