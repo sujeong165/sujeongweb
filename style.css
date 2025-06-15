@@ -1,143 +1,47 @@
-/* 본문 내용 설정들 */
-body {
+/* 🧱 기본 설정 */
+* {
   margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
   scroll-behavior: smooth;
 }
 
-.content-box {
-  background: url('크레용 테두리02.png') no-repeat center/contain;
-  background-color: white;
-  padding: 4rem 2rem;
-  margin: 4rem auto;
-  max-width: 800px;
-  text-align: center;
-  background-size: 100% 100%;
-  border: none; /* 기본 테두리 제거 */
-  box-sizing: border-box;
-}
-
-
-.content-box h2 {
-  font-family: 'Arial Black', sans-serif;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.content-box p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.dongle-text {
-  font-family: 'Arial Black', sans-serif;
-  font-size: 4rem;
-  color: #0059ff;
-  margin: 2rem 0 1rem;
-  letter-spacing: 1rem;
-}
-
-.faces {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.faces img {
-  width: 120px;
-  height: auto;
-}
-
-.caption {
-  background: #fff1c6;
-  padding: 1rem;
-  border-radius: 6px;
-  font-size: 0.95rem;
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.text-nav {
-  display: flex;
-  justify-content: center;
-  padding: 2rem 1rem;
-  background-color: #fdfcf5;
-}
-
-.text-nav ul {
-  display: flex;
-  gap: 4rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.text-nav a {
-  text-decoration: none;
-  color: #222;
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: 'Arial Black', sans-serif;
-  transition: color 0.3s ease;
-}
-
-.text-nav a:hover {
-  color: #ffbb00;
-}
-
-
-
-
-
-
-
-
-/* 상단 타이틀 바 */
-
-.text-nav {
-  position: fixed;                /* ✅ 고정 유지 */
-  top: 0;
-  left: 0;
+/* 🔳 섹션 설정 */
+.section {
+  height: 100vh;
   width: 100%;
-  z-index: 1000;
-  padding: 1rem 2rem;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative; /* 떠다니는 이미지 기준 */
+  overflow: hidden;
 }
 
-.nav-inner {
-  display: flex;
-  justify-content: center;        /* ✅ 메뉴 중앙 정렬 */
-  align-items: center;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;             /* ✅ .logo 기준 */
+/* 🖼️ 배경 이미지 넣기 */
+.section1 {
+  background-image: url('이미지001.png');
+}
+.section2 {
+  background-image: url('이미지002.png');
+}
+.section3 {
+  background-image: url('bg3.png');
 }
 
-.logo {
+/* 🎈 둥실 PNG 스타일 */
+.floating {
   position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Arial Black', sans-serif;
-  font-size: 1.2rem;
-  color: #222;
-  padding-left: 2rem;
+  width: 150px; /* 필요에 따라 조정 */
+  animation: float 3s ease-in-out infinite;
+  z-index: 10;
 }
 
-
-/*타일틀 바 백그라운드 */
-.text-nav.scrolled {
-  background-color: rgba(255, 255, 255, 0.733); /* ✅ 더 뚜렷하게 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+/* 🎞️ 둥실 애니메이션 */
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
 }
