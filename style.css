@@ -68,6 +68,10 @@ html, body {
   background-image: url('배경4.png');
 }
 
+.section5 {
+  background-image: url('배경5.png');
+}
+
 /* 🎈 둥실 PNG 스타일 */
 .floating {
   position: absolute;
@@ -95,3 +99,5 @@ html, body {
 .scroll-fade.show {
   opacity: 1;
   transform: translateY(0);
+
+

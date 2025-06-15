@@ -20,3 +20,5 @@ function handleScrollFadeIn() {
 // ✅ 페이지 로드 시 + 스크롤 시 실행
 window.addEventListener('scroll', handleScrollFadeIn);
 window.addEventListener('load', handleScrollFadeIn);
+
+
