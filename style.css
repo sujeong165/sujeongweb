@@ -64,6 +64,9 @@ html, body {
 .section3 {
   background-image: url('배경3.png');
 }
+.section4 {
+  background-image: url('배경4.png');
+}
 
 /* 🎈 둥실 PNG 스타일 */
 .floating {
